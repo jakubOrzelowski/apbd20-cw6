@@ -1,8 +1,7 @@
-﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations;
 
 namespace Cw6.Models.DTOs;
-
-public class AddAnimalRequest
+public class UpdateAnimalRequest
 {
     [Required]
     [MaxLength(200)]

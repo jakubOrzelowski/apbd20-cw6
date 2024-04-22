@@ -1,27 +1,25 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\s27977\\Desktop\\apbd20-cw6\\Cw6\\Cw6.csproj": {}
+    "/Users/jakuborzelowski/Desktop/APBD/apbd20-cw6/Cw6/Cw6.csproj": {}
   },
   "projects": {
-    "C:\\Users\\s27977\\Desktop\\apbd20-cw6\\Cw6\\Cw6.csproj": {
+    "/Users/jakuborzelowski/Desktop/APBD/apbd20-cw6/Cw6/Cw6.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\s27977\\Desktop\\apbd20-cw6\\Cw6\\Cw6.csproj",
+        "projectUniqueName": "/Users/jakuborzelowski/Desktop/APBD/apbd20-cw6/Cw6/Cw6.csproj",
         "projectName": "Cw6",
-        "projectPath": "C:\\Users\\s27977\\Desktop\\apbd20-cw6\\Cw6\\Cw6.csproj",
-        "packagesPath": "C:\\Users\\s27977\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\s27977\\Desktop\\apbd20-cw6\\Cw6\\obj\\",
+        "projectPath": "/Users/jakuborzelowski/Desktop/APBD/apbd20-cw6/Cw6/Cw6.csproj",
+        "packagesPath": "/Users/jakuborzelowski/.nuget/packages/",
+        "outputPath": "/Users/jakuborzelowski/Desktop/APBD/apbd20-cw6/Cw6/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\s27977\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+          "/Users/jakuborzelowski/.nuget/NuGet/NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net8.0"
         ],
         "sources": {
-          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -34,11 +32,6 @@
           "warnAsError": [
             "NU1605"
           ]
-        },
-        "restoreAuditProperties": {
-          "enableAudit": "true",
-          "auditLevel": "low",
-          "auditMode": "direct"
         }
       },
       "frameworks": {
@@ -77,7 +70,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.202/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/8.0.202/PortableRuntimeIdentifierGraph.json"
         }
       }
     }
