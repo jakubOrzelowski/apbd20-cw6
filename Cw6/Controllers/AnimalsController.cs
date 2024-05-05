@@ -18,23 +18,49 @@ public class AnimalsController : ControllerBase
     }
 
     [HttpGet]
-    public IActionResult GetAnimals(string par)
+    public IActionResult GetAnimals(string orderBy = "Name")
     {
         //otwieramy polaczenie
         using SqlConnection connection = new SqlConnection(_configuration.GetConnectionString("Default"));
         connection.Open();
+        
+        string orderByPar = "ORDER BY Name";
+        
+        if (!string.IsNullOrEmpty(orderBy))
+        {
+            switch (orderBy.ToLower())
+            {
+                case "name":
+                    orderByPar = "ORDER BY Name";
+                    break;
+                case "description":
+                    orderByPar = "ORDER BY Description";
+                    break;
+                case "category":
+                    orderByPar = "ORDER BY Category";
+                    break;
+                case "area":
+                    orderByPar = "ORDER BY Area";
+                    break;
+            }
+        }
+        else
+        {
+            orderByPar = "ORDER BY Name";
+        }
+
 
         // definicja command
         SqlCommand command = new SqlCommand();
         command.Connection = connection;
-        command.CommandText = "SELECT * FROM Animal ORDER BY=" + par;
+        command.CommandText = "SELECT * FROM Animal " + orderByPar;
         
         // wykonanie zapytania
         var reader = command.ExecuteReader();
 
         List<Animal> animals = new List<Animal>();
 
-        int idAnimalOrdinal = reader.GetOrdinal("IdAnimal");
+        int idAnimalOrdinal = reader.GetOrdinal("Id");
         int nameOrdinal = reader.GetOrdinal("Name");
         int descriptionOrdinal = reader.GetOrdinal("Description");
         int categoryOrdinal = reader.GetOrdinal("Category");
@@ -66,7 +92,8 @@ public class AnimalsController : ControllerBase
         // definicja command
         SqlCommand command = new SqlCommand();
         command.Connection = connection;
-        command.CommandText = "INSERT INTO Animal VALUES(@animalName,@animalDescription,@animalCategory,@animalArea)";
+        command.CommandText = "INSERT INTO Animal VALUES(@idAnimal,@animalName,@animalDescription,@animalCategory,@animalArea)";
+        command.Parameters.AddWithValue("@idAnimal", addAnimalRequest.Id);
         command.Parameters.AddWithValue("@animalName", addAnimalRequest.Name);
         command.Parameters.AddWithValue("@animalDescription", addAnimalRequest.Description);
         command.Parameters.AddWithValue("@animalCategory", addAnimalRequest.Category);
@@ -88,7 +115,7 @@ public class AnimalsController : ControllerBase
         //definicja komendy
         SqlCommand command = new SqlCommand();
         command.Connection = connection;
-        command.CommandText = "UPDATE Animal SET Description=@animalDescription, Category=@animalCategory, Area=@animalArea WHERE IdAnimal=@idAnimal";
+        command.CommandText = "UPDATE Animal SET Description=@animalDescription, Category=@animalCategory, Area=@animalArea WHERE Id=@idAnimal";
         command.Parameters.AddWithValue("@animalName", updateAnimalRequest.Name);
         command.Parameters.AddWithValue("@animalDescription", updateAnimalRequest.Description);
         command.Parameters.AddWithValue("@animalCategory", updateAnimalRequest.Category);
@@ -111,7 +138,7 @@ public class AnimalsController : ControllerBase
         //definicja komendy
         SqlCommand command = new SqlCommand();
         command.Connection = connection;
-        command.CommandText = "DELETE FROM Animal WHERE IdAnimal=@idAnimal";
+        command.CommandText = "DELETE FROM Animal WHERE Id=@idAnimal";
         command.Parameters.AddWithValue("@idAnimal", idAnimal);
 
         //wykonanie
